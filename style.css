@@ -1,0 +1,124 @@
+/* Configurações globais e reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Container principal da aplicação */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Títulos e subtítulos */
+h1 {
+    font-size: 1.8rem;
+    color: #4a5568;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 25px;
+}
+
+/* Grupos de formulário (Inputs e Labels) */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #667eea;
+}
+
+/* Botão de cálculo */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #5a67d8;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Estilização da área de resultado */
+#result-container {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    border-left: 5px solid #667eea;
+}
+
+#result-container h2 {
+    font-size: 1.1rem;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+#imc-value {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2b6cb0;
+    margin-bottom: 5px;
+}
+
+#imc-classification {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+/* Utilitário para ocultar elementos */
+.hidden {
+    display: none;
+}
