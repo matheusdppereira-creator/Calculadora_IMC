@@ -1,4 +1,31 @@
-/* Configurações globais e reset básico */
+:root {
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --container-bg: #ffffff;
+    --text-color: #333333;
+    --subtitle-color: #718096;
+    --input-bg: #ffffff;
+    --input-border: #cbd5e0;
+    --primary-color: #667eea;
+    --primary-hover: #5a67d8;
+    --result-bg: #f7fafc;
+    --box-bg: #edf2f7;
+    --border-color: #e2e8f0;
+}
+
+[data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    --container-bg: #1a202c;
+    --text-color: #f7fafc;
+    --subtitle-color: #a0aec0;
+    --input-bg: #2d3748;
+    --input-border: #4a5568;
+    --primary-color: #7f9cf5;
+    --primary-hover: #667eea;
+    --result-bg: #2d3748;
+    --box-bg: #4a5568;
+    --border-color: #4a5568;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,39 +34,68 @@
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
+    background: var(--bg-gradient);
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    color: #333;
+    justify-content: center;
+    color: var(--text-color);
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Container principal da aplicação */
+.theme-toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#theme-toggle {
+    background: var(--container-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 .container {
-    background: #ffffff;
+    background: var(--container-bg);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
     text-align: center;
 }
 
-/* Títulos e subtítulos */
-h1 {
-    font-size: 1.8rem;
-    color: #4a5568;
-    margin-bottom: 8px;
-}
-
 .subtitle {
-    font-size: 0.9rem;
-    color: #718096;
-    margin-bottom: 25px;
+    font-size: 0.85rem;
+    color: var(--subtitle-color);
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* Grupos de formulário (Inputs e Labels) */
+.unit-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
 .form-group {
     text-align: left;
     margin-bottom: 15px;
@@ -49,76 +105,160 @@ label {
     display: block;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #4a5568;
     margin-bottom: 5px;
 }
 
-input {
+input, select {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #cbd5e0;
+    padding: 10px;
+    border: 1px solid var(--input-border);
     border-radius: 6px;
     font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
     outline: none;
-    transition: border-color 0.2s;
 }
 
-input:focus {
-    border-color: #667eea;
+input:focus, select:focus {
+    border-color: var(--primary-color);
 }
 
-/* Botão de cálculo */
 button {
     width: 100%;
     padding: 12px;
-    background-color: #667eea;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 6px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-    margin-top: 10px;
+    transition: background-color 0.2s;
+    margin-top: 5px;
 }
 
 button:hover {
-    background-color: #5a67d8;
+    background-color: var(--primary-hover);
 }
 
-button:active {
-    transform: scale(0.98);
+.secondary-btn {
+    background-color: #4a5568;
+    margin-top: 8px;
 }
 
-/* Estilização da área de resultado */
+.secondary-btn:hover {
+    background-color: #2d3748;
+}
+
+.danger-btn {
+    background-color: #e53e3e;
+    font-size: 0.8rem;
+    padding: 6px;
+    margin-top: 10px;
+}
+
 #result-container {
     margin-top: 25px;
     padding: 15px;
-    background-color: #f7fafc;
+    background-color: var(--result-bg);
     border-radius: 8px;
-    border-left: 5px solid #667eea;
-}
-
-#result-container h2 {
-    font-size: 1.1rem;
-    color: #2d3748;
-    margin-bottom: 8px;
+    border-left: 5px solid var(--primary-color);
 }
 
 #imc-value {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #2b6cb0;
     margin-bottom: 5px;
 }
 
 #imc-classification {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #4a5568;
+    margin-bottom: 15px;
 }
 
-/* Utilitário para ocultar elementos */
+/* Escala Visual */
+.visual-scale {
+    margin: 15px 0;
+}
+
+.scale-bar {
+    height: 10px;
+    background: linear-gradient(to right, #3182ce, #38a169, #d69e2e, #e53e3e, #9b2c2c);
+    border-radius: 5px;
+    position: relative;
+}
+
+.scale-indicator {
+    width: 4px;
+    height: 16px;
+    background-color: #000;
+    position: absolute;
+    top: -3px;
+    left: 0%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--subtitle-color);
+    margin-top: 4px;
+}
+
+.info-box {
+    font-size: 0.85rem;
+    background-color: var(--box-bg);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.disclaimer-box {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
+    color: var(--subtitle-color);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.history-section {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.history-section h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.history-item {
+    font-size: 0.8rem;
+    background-color: var(--box-bg);
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.privacy-footer {
+    font-size: 0.75rem;
+    color: var(--subtitle-color);
+    text-align: center;
+    max-width: 500px;
+}
+
 .hidden {
     display: none;
 }

@@ -3,37 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMC</title>
-    <!-- Vinculando o arquivo de estilos CSS -->
+    <title>Calculadora de IMC Avançada</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" aria-label="Alternar modo escuro">🌙</button>
+    </div>
+
     <div class="container">
-        <h1>🧮 Calculadora de IMC</h1>
-        <p class="subtitle">Descubra seu Índice de Massa Corporal de forma rápida</p>
+        <h1>🧮 Calculadora de IMC Avançada</h1>
+        <p class="subtitle">Análise corporal completa baseada em diretrizes da OMS</p>
+
+        <!-- Seleção de Idade / Perfil -->
+        <div class="form-group">
+            <label for="age-group">Perfil de Idade:</label>
+            <select id="age-group">
+                <option value="adult">Adulto (20 a 59 anos)</option>
+                <option value="elderly">Idoso (60+ anos)</option>
+                <option value="child">Criança / Adolescente (referência orientativa)</option>
+            </select>
+        </div>
+
+        <!-- Entrada de Unidades -->
+        <div class="unit-toggle">
+            <label><input type="radio" name="unit" value="metric" checked> Métrico (kg / m)</label>
+            <label><input type="radio" name="unit" value="imperial"> Imperial (lb / pol)</label>
+        </div>
 
         <div class="form-group">
-            <label for="weight">Peso (kg):</label>
+            <label for="weight" id="weight-label">Peso (kg):</label>
             <input type="number" id="weight" step="0.1" placeholder="Ex: 70.5" />
         </div>
 
         <div class="form-group">
-            <label for="height">Altura (m):</label>
+            <label for="height" id="height-label">Altura (metros):</label>
             <input type="number" id="height" step="0.01" placeholder="Ex: 1.75" />
         </div>
 
-        <button id="calculate-btn">Calcular</button>
+        <button id="calculate-btn">Calcular IMC</button>
 
-        <!-- Área onde o resultado será exibido -->
+        <!-- Área de Resultados -->
         <div id="result-container" class="hidden">
-            <h2>Resultado</h2>
+            <h2>Resultado da Avaliação</h2>
             <div id="imc-value"></div>
             <div id="imc-classification"></div>
+            
+            <!-- Escala Visual -->
+            <div class="visual-scale">
+                <div class="scale-bar">
+                    <div id="scale-indicator" class="scale-indicator"></div>
+                </div>
+                <div class="scale-labels">
+                    <span>Abaixo</span>
+                    <span>Normal</span>
+                    <span>Sobrepeso</span>
+                    <span>Obesidade</span>
+                </div>
+            </div>
+
+            <!-- Faixa de Peso Ideal -->
+            <div id="weight-reference" class="info-box"></div>
+
+            <!-- Explicação Educativa e Limitações -->
+            <div id="educational-info" class="info-box"></div>
+            <div id="age-guidelines" class="info-box"></div>
+            <div class="disclaimer-box">
+                <small>⚠️ <strong>Aviso Importante:</strong> O IMC é uma triagem estatística e não substitui a avaliação médica profissional. Ele não diferencia massa magra (músculos) de gordura corporal.</small>
+            </div>
+
+            <!-- Ações Avançadas -->
+            <div class="action-buttons">
+                <button id="print-btn" class="secondary-btn">🖨️ Imprimir / Salvar PDF</button>
+                <button id="share-btn" class="secondary-btn">🔗 Compartilhar</button>
+            </div>
+        </div>
+
+        <!-- Histórico e Evolução -->
+        <div class="history-section">
+            <h3>📈 Histórico de Evolução</h3>
+            <div id="history-list"></div>
+            <button id="clear-history" class="danger-btn hidden">Limpar Histórico</button>
         </div>
     </div>
 
-    <!-- Vinculando o arquivo de scripts JavaScript -->
+    <!-- Rodapé de Privacidade -->
+    <footer class="privacy-footer">
+        🔒 Seus dados são processados inteiramente no seu navegador e não são enviados para nenhum servidor externo.
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
