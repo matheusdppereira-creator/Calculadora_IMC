@@ -1,98 +1,450 @@
+<div class="bg-brand-court/90 rounded-2xl border border-brand-card-border p-6 shadow-lg">
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center text-brand-gold">
+        <i data-lucide="book-open" class="w-4 h-4"></i>
+      </div>
+      <div>
+        <h3 class="font-athletic text-xl tracking-wider text-white uppercase">PLAYBOOK DO TREINADOR: RECOMENDAÇÕES</h3>
+        <p class="text-xs text-slate-400">Instruções táticas para maximizar seu rendimento</p>
+      </div>
+    </div>
+    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-card border border-slate-700 text-slate-300">
+      CUSTOM COACH AI
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5" id="coachTipsGrid">
+    
+    <!-- CÁRDIO & AGILIDADE -->
+    <div class="bg-brand-card/70 p-3.5 rounded-xl border border-brand-card-border hover:border-brand-orange/50 transition-colors">
+      <div class="flex items-center gap-2 text-brand-orange mb-1.5">
+        <i data-lucide="activity" class="w-4 h-4"></i>
+        <span class="font-athletic text-base tracking-wide uppercase">Cárdio & Agilidade</span>
+      </div>
+      <p id="tipAgility" class="text-xs text-slate-300 leading-relaxed">
+        Treinos de agilidade com escada de coordenação e saltos de caixa para aprimorar impulsão vertical.
+      </p>
+    </div>
+
+    <!-- FORÇA NO GARRAFÃO -->
+    <div class="bg-brand-card/70 p-3.5 rounded-xl border border-brand-card-border hover:border-brand-neon/50 transition-colors">
+      <div class="flex items-center gap-2 text-brand-neon mb-1.5">
+        <i data-lucide="dumbbell" class="w-4 h-4"></i>
+        <span class="font-athletic text-base tracking-wide uppercase">Força no Garrafão</span>
+      </div>
+      <p id="tipStrength" class="text-xs text-slate-300 leading-relaxed">
+        Manutenção de potência atlética: movimentos olímpicos, calistenia e fortalecimento do core.
+      </p>
+    </div>
+
+    <!-- NUTRIÇÃO DE MVP -->
+    <div class="bg-brand-card/70 p-3.5 rounded-xl border border-brand-card-border hover:border-brand-gold/50 transition-colors">
+      <div class="flex items-center gap-2 text-brand-gold mb-1.5">
+        <i data-lucide="apple" class="w-4 h-4"></i>
+        <span class="font-athletic text-base tracking-wide uppercase">Nutrição de MVP</span>
+      </div>
+      <p id="tipNutrition" class="text-xs text-slate-300 leading-relaxed">
+        Dieta de alto rendimento: micronutrientes, hidratação ativa e refeições equilibradas pré e pós-jogo.
+      </p>
+    </div>
+
+  </div>
+</div>
+```[cite: 6]
+
+2. **Lógica JS que popula em tempo real (`runCalculationLive`):**[cite: 6]
+```javascript
+// Captura das referências
+const tipAgility = document.getElementById('tipAgility');
+const tipStrength = document.getElementById('tipStrength');
+const tipNutrition = document.getElementById('tipNutrition');
+
+// Atualização tática baseada no IMC
+if (imc < 18.5) {
+  tipAgility.textContent = "Mantenha a agilidade com treinos de drible e footwork veloz, sem exagerar em aeróbicos longos.";
+  tipStrength.textContent = "Hipertrofia prioritária: treinos de força pesados (supino, agachamento, terra) com cargas progressivas.";
+  tipNutrition.textContent = "Superávit calórico limpo: aumente carboidratos complexos, pastas de oleaginosas e 2g/kg de proteína diária.";
+} else if (imc >= 18.5 && imc < 25.0) {
+  tipAgility.textContent = "Treinos de agilidade com escada de coordenação e saltos de caixa para aprimorar impulsão vertical.";
+  tipStrength.textContent = "Manutenção de potência atlética: movimentos olímpicos, calistenia e fortalecimento do core.";
+  tipNutrition.textContent = "Dieta de alto rendimento: micronutrientes, hidratação ativa e refeições equilibradas pré e pós-jogo.";
+} else if (imc >= 25.0 && imc < 30.0) {
+  tipAgility.textContent = "Treinos aeróbicos de baixo impacto: natação, bike ergométrica e circuitos funcionais para queimar calorias.";
+  tipStrength.textContent = "Circuitos com repetições moderadas e menor tempo de descanso para elevar o gasto metabólico basal.";
+  tipNutrition.textContent = "Leve déficit calórico: priorize vegetais fibrosos, reduza ultraprocessados e controle bebidas açucaradas.";
+} else {
+  tipAgility.textContent = "Caminhadas aceleradas e hidroginástica; evite saltos de alto impacto repetitivos por enquanto.";
+  tipStrength.textContent = "Musculação controlada para preservação de massa magra e ativação do metabolismo sem estresse articular.";
+  tipNutrition.textContent = "Acompanhamento nutricional individualizado focado em déficit sustentável e reeducação alimentar constante.";
+}
+```[cite: 6]
+
+---
+
+### Códigos Separados e Prontos para Execução:
+
+Aqui está o projeto completo em três arquivos mantendo a execução 100% fiel ao `code.html`[cite: 6]:
+
+#### 1. `index.html`
+```html
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMC Avançada</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dunk IMC — Championship Body Check</title>
+  <!-- Google Fonts: Bebas Neue, Orbitron, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF6B00',
+              'orange-glow': '#FF8533',
+              dark: '#0B0B0E',
+              court: '#121218',
+              card: '#191922',
+              'card-border': '#292938',
+              neon: '#00F0FF',
+              gold: '#FFB800',
+              chalk: '#F3F4F6',
+              led: '#FF2A2A',
+              'led-green': '#00FF66'
+            }
+          },
+          fontFamily: {
+            athletic: ['"Bebas Neue"', 'sans-serif'],
+            scoreboard: ['"Orbitron"', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'glow-orange': '0 0 25px -3px rgba(255, 107, 0, 0.45)',
+            'glow-blue': '0 0 25px -3px rgba(0, 240, 255, 0.4)',
+            'glow-gold': '0 0 25px -3px rgba(255, 184, 0, 0.45)',
+            'led-screen': 'inset 0 0 20px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 107, 0, 0.2)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-court-pattern text-slate-100 font-sans min-h-screen antialiased selection:bg-brand-orange selection:text-white flex flex-col justify-between">
 
-    <div class="theme-toggle-container">
-        <button id="theme-toggle" aria-label="Alternar modo escuro">🌙</button>
+  <!-- TOP DECORATIVE STADIUM LIGHT BEAM -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-1 bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-70 blur-[1px] pointer-events-none z-50"></div>
+
+  <!-- HEADER -->
+  <header class="relative z-20 border-b border-brand-card-border/60 bg-brand-dark/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      <div class="flex items-center gap-3.5 group cursor-pointer">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-orange via-[#E05300] to-amber-700 flex items-center justify-center shadow-glow-orange border border-white/20 relative overflow-hidden transition-transform group-hover:scale-105">
+          <svg class="w-7 h-7 text-white drop-shadow-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M4.93 4.93l4.24 4.24"></path>
+            <path d="M14.83 9.17l4.24-4.24"></path>
+            <path d="M14.83 14.83l4.24 4.24"></path>
+            <path d="M9.17 14.83L4.93 19.07"></path>
+            <circle cx="12" cy="12" r="3.5" stroke-dasharray="1 1"></circle>
+          </svg>
+          <div class="absolute -top-1 -right-1 w-3 h-3 bg-brand-neon rounded-full animate-ping opacity-75"></div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-athletic text-3xl sm:text-4xl tracking-wider text-white uppercase leading-none">
+              DUNK <span class="text-brand-orange">IMC</span>
+            </span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-scoreboard tracking-widest bg-brand-orange/20 text-brand-orange border border-brand-orange/40 uppercase">
+              PRO STATS
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 font-medium tracking-wide">
+            Championship Body Check &bull; <span class="text-slate-300">Entre em quadra na sua melhor forma!</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 bg-brand-court/90 border border-brand-card-border px-4 py-2 rounded-xl shadow-inner text-xs font-mono">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-slate-400">STATUS:</span>
+          <span class="text-emerald-400 font-bold uppercase">GAME READY</span>
+        </div>
+        <div class="h-4 w-px bg-slate-700 mx-1"></div>
+        <div class="flex items-center gap-1.5 text-brand-gold font-bold">
+          <i data-lucide="trophy" class="w-3.5 h-3.5"></i>
+          <span>SEASON 2025</span>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <div class="container">
-        <h1>🧮 Calculadora de IMC Avançada</h1>
-        <p class="subtitle">Análise corporal completa baseada em diretrizes da OMS</p>
+  <!-- MAIN ARENA CONTENT -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- COLUNA ESQUERDA -->
+      <section class="lg:col-span-5 flex flex-col gap-6">
+        
+        <div class="bg-brand-court/90 rounded-2xl border-2 border-brand-card-border p-6 shadow-xl relative backdrop-blur-sm overflow-hidden">
+          
+          <div class="absolute -top-3 right-6 px-3 py-1 bg-brand-orange text-black font-athletic text-sm tracking-wider uppercase rounded-b-md shadow-md font-black">
+            PLAYER #23 ENTRY
+          </div>
 
-        <!-- Seleção de Idade / Perfil -->
-        <div class="form-group">
-            <label for="age-group">Perfil de Idade:</label>
-            <select id="age-group">
-                <option value="adult">Adulto (20 a 59 anos)</option>
-                <option value="elderly">Idoso (60+ anos)</option>
-                <option value="child">Criança / Adolescente (referência orientativa)</option>
-            </select>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-9 h-9 rounded-lg bg-brand-orange/20 border border-brand-orange/50 flex items-center justify-center text-brand-orange">
+              <i data-lucide="clipboard-pen" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h2 class="font-athletic text-2xl tracking-wider text-white uppercase">FICHA TÉCNICA DO ATLETA</h2>
+              <p class="text-xs text-slate-400">Insira suas medidas para o scouting relatório</p>
+            </div>
+          </div>
+
+          <form id="imcForm" onsubmit="calculateIMC(event)" class="space-y-6">
+
+            <!-- ALTURA -->
+            <div class="bg-brand-card/80 p-4 rounded-xl border border-brand-card-border hover:border-slate-600 transition-colors">
+              <div class="flex justify-between items-center mb-2">
+                <label for="heightInput" class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                  <i data-lucide="ruler" class="w-4 h-4 text-brand-neon"></i>
+                  Altura do Atleta
+                </label>
+                <div class="flex items-center gap-2">
+                  <span id="heightDisplay" class="font-scoreboard text-xl font-bold text-brand-neon">178</span>
+                  <span class="text-xs text-slate-400 font-mono font-semibold">cm</span>
+                </div>
+              </div>
+
+              <input type="range" id="heightRange" min="120" max="235" value="178" step="1" 
+                     class="w-full h-2 mb-3 accent-brand-orange cursor-pointer"
+                     oninput="syncFromRange('height', this.value)">
+
+              <div class="flex items-center gap-3">
+                <div class="relative flex-1">
+                  <input type="number" id="heightInput" min="100" max="250" value="178" step="1"
+                         class="w-full bg-brand-dark/90 border border-slate-700 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange rounded-lg px-3.5 py-2.5 text-white font-scoreboard text-lg tracking-wider outline-none transition-all"
+                         oninput="syncFromInput('height', this.value)">
+                  <span class="absolute right-3 top-3 text-xs text-slate-500 font-mono font-bold">cm</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">
+                  ou <span id="heightMeters" class="text-white font-bold">1.78</span> m
+                </div>
+              </div>
+            </div>
+
+            <!-- PESO -->
+            <div class="bg-brand-card/80 p-4 rounded-xl border border-brand-card-border hover:border-slate-600 transition-colors">
+              <div class="flex justify-between items-center mb-2">
+                <label for="weightInput" class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                  <i data-lucide="weight" class="w-4 h-4 text-brand-gold"></i>
+                  Peso Corporal
+                </label>
+                <div class="flex items-center gap-2">
+                  <span id="weightDisplay" class="font-scoreboard text-xl font-bold text-brand-gold">74.5</span>
+                  <span class="text-xs text-slate-400 font-mono font-semibold">kg</span>
+                </div>
+              </div>
+
+              <input type="range" id="weightRange" min="35" max="180" value="74.5" step="0.5" 
+                     class="w-full h-2 mb-3 accent-brand-gold cursor-pointer"
+                     oninput="syncFromRange('weight', this.value)">
+
+              <div class="flex items-center gap-3">
+                <div class="relative flex-1">
+                  <input type="number" id="weightInput" min="30" max="250" value="74.5" step="0.1"
+                         class="w-full bg-brand-dark/90 border border-slate-700 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold rounded-lg px-3.5 py-2.5 text-white font-scoreboard text-lg tracking-wider outline-none transition-all"
+                         oninput="syncFromInput('weight', this.value)">
+                  <span class="absolute right-3 top-3 text-xs text-slate-500 font-mono font-bold">kg</span>
+                </div>
+                <div class="text-xs text-slate-400 font-mono">
+                  <span id="weightLbs" class="text-white font-bold">164.2</span> lbs
+                </div>
+              </div>
+            </div>
+
+            <!-- BOTÃO CTA -->
+            <button type="submit" id="dunkBtn"
+                    class="w-full group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-orange via-[#FF7700] to-amber-600 p-0.5 shadow-glow-orange active:scale-[0.98] transition-all duration-200">
+              <div class="w-full py-4 px-6 rounded-[10px] bg-gradient-to-r from-brand-orange to-[#E55700] flex items-center justify-center gap-3 text-white font-athletic tracking-widest text-2xl uppercase group-hover:from-brand-orange-glow group-hover:to-brand-orange transition-all">
+                <svg class="w-7 h-7 text-white transform -rotate-12 group-hover:rotate-0 group-hover:scale-125 transition-transform duration-300 drop-shadow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M4.93 4.93l4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83L4.93 19.07"></path>
+                </svg>
+                <span class="drop-shadow-md">ARREMESSAR &bull; SLAM DUNK!</span>
+                <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1.5 transition-transform"></i>
+              </div>
+            </button>
+          </form>
+
         </div>
 
-        <!-- Entrada de Unidades -->
-        <div class="unit-toggle">
-            <label><input type="radio" name="unit" value="metric" checked> Métrico (kg / m)</label>
-            <label><input type="radio" name="unit" value="imperial"> Imperial (lb / pol)</label>
-        </div>
+      </section>
 
-        <div class="form-group">
-            <label for="weight" id="weight-label">Peso (kg):</label>
-            <input type="number" id="weight" step="0.1" placeholder="Ex: 70.5" />
-        </div>
+      <!-- COLUNA DIREITA -->
+      <section class="lg:col-span-7 flex flex-col gap-6">
 
-        <div class="form-group">
-            <label for="height" id="height-label">Altura (metros):</label>
-            <input type="number" id="height" step="0.01" placeholder="Ex: 1.75" />
-        </div>
+        <!-- SCOREBOARD -->
+        <div class="bg-gradient-to-b from-[#161622] via-[#0F0F16] to-[#0A0A0E] rounded-3xl border-4 border-slate-800 shadow-2xl relative p-6 sm:p-8 overflow-hidden led-screen">
+          
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-6">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-brand-orange animate-ping"></div>
+              <span class="font-scoreboard tracking-widest text-xs text-brand-orange uppercase font-bold">
+                ARENA SCOREBOARD &bull; Q4 LIVE
+              </span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="px-2.5 py-1 rounded bg-black/80 border border-slate-800 text-xs font-mono text-amber-400 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                <span id="shotClock">24.0s</span>
+              </div>
+              <div class="px-2 py-0.5 rounded bg-red-950/80 border border-red-700 text-[10px] font-scoreboard text-red-400 tracking-wider">
+                SHOT CLOCK
+              </div>
+            </div>
+          </div>
 
-        <button id="calculate-btn">Calcular IMC</button>
-
-        <!-- Área de Resultados -->
-        <div id="result-container" class="hidden">
-            <h2>Resultado da Avaliação</h2>
-            <div id="imc-value"></div>
-            <div id="imc-classification"></div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             
-            <!-- Escala Visual -->
-            <div class="visual-scale">
-                <div class="scale-bar">
-                    <div id="scale-indicator" class="scale-indicator"></div>
-                </div>
-                <div class="scale-labels">
-                    <span>Abaixo</span>
-                    <span>Normal</span>
-                    <span>Sobrepeso</span>
-                    <span>Obesidade</span>
-                </div>
+            <div class="md:col-span-5 flex flex-col items-center justify-center p-5 rounded-2xl bg-black/85 border-2 border-slate-800/90 shadow-led-screen relative">
+              <div class="text-[11px] font-scoreboard tracking-widest uppercase text-slate-400 mb-1">
+                SEU IMC CALCULADO
+              </div>
+              
+              <div class="relative py-1 flex items-baseline justify-center">
+                <span id="imcScore" class="font-scoreboard font-black text-6xl sm:text-7xl text-brand-orange tracking-tight transition-all duration-500 drop-shadow-[0_0_20px_rgba(255,107,0,0.7)]">
+                  23.5
+                </span>
+                <span class="text-xs text-slate-400 ml-1 font-mono font-bold">kg/m²</span>
+              </div>
+
+              <div id="idealWeightBadge" class="mt-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-[11px] font-mono text-slate-300">
+                Peso Ideal: <span id="idealWeightRange" class="text-emerald-400 font-bold">58.6 - 78.9 kg</span>
+              </div>
             </div>
 
-            <!-- Faixa de Peso Ideal -->
-            <div id="weight-reference" class="info-box"></div>
+            <div class="md:col-span-7 flex flex-col justify-center">
+              
+              <div class="text-xs uppercase font-scoreboard tracking-wider text-slate-400 mb-1 flex items-center gap-2">
+                <i data-lucide="user-check" class="w-4 h-4 text-brand-neon"></i>
+                CLASSIFICAÇÃO DE QUADRA:
+              </div>
 
-            <!-- Explicação Educativa e Limitações -->
-            <div id="educational-info" class="info-box"></div>
-            <div id="age-guidelines" class="info-box"></div>
-            <div class="disclaimer-box">
-                <small>⚠️ <strong>Aviso Importante:</strong> O IMC é uma triagem estatística e não substitui a avaliação médica profissional. Ele não diferencia massa magra (músculos) de gordura corporal.</small>
+              <div id="statusTitle" class="font-athletic text-3xl sm:text-4xl text-emerald-400 tracking-wide leading-tight mb-1 drop-shadow">
+                TITULAR / ALL-STAR (EM FORMA!)
+              </div>
+
+              <div id="statusSubtitle" class="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider mb-3">
+                PESO NORMAL &bull; ZONA DE MÁXIMO RENDIMENTO
+              </div>
+
+              <p id="statusDescription" class="text-xs sm:text-sm text-slate-300 leading-relaxed bg-brand-card/50 p-3 rounded-xl border border-slate-800">
+                Equilíbrio perfeito de potência aeróbica, potência de salto e resistência muscular. Você está no auge da temporada regular!
+              </p>
             </div>
 
-            <!-- Ações Avançadas -->
-            <div class="action-buttons">
-                <button id="print-btn" class="secondary-btn">🖨️ Imprimir / Salvar PDF</button>
-                <button id="share-btn" class="secondary-btn">🔗 Compartilhar</button>
+          </div>
+
+          <!-- BARRA DE PROGRESSÃO -->
+          <div class="mt-8 pt-6 border-t border-slate-800">
+            <div class="relative w-full h-8 bg-slate-950 rounded-xl p-1 border-2 border-slate-800 overflow-hidden flex shadow-inner">
+              <div class="w-[25%] h-full bg-cyan-950/70 border-r border-cyan-500/30 flex items-center justify-center text-[9px] font-mono text-cyan-400/80 uppercase">Abaixo</div>
+              <div class="w-[30%] h-full bg-emerald-950/70 border-r border-emerald-500/30 flex items-center justify-center text-[9px] font-mono text-emerald-400/80 uppercase font-bold">All-Star</div>
+              <div class="w-[25%] h-full bg-amber-950/70 border-r border-amber-500/30 flex items-center justify-center text-[9px] font-mono text-amber-400/80 uppercase">Sobrepeso</div>
+              <div class="w-[20%] h-full bg-red-950/70 flex items-center justify-center text-[9px] font-mono text-red-400/80 uppercase">Pivô Extr.</div>
+
+              <div id="courtIndicator" 
+                   class="absolute top-1 bottom-1 w-6 h-6 -ml-3 rounded-full bg-brand-orange border-2 border-white shadow-glow-orange flex items-center justify-center transition-all duration-700 ease-out z-20"
+                   style="left: 45%;">
+                <div class="w-2 h-2 rounded-full bg-white animate-ping"></div>
+              </div>
             </div>
+          </div>
+
         </div>
 
-        <!-- Histórico e Evolução -->
-        <div class="history-section">
-            <h3>📈 Histórico de Evolução</h3>
-            <div id="history-list"></div>
-            <button id="clear-history" class="danger-btn hidden">Limpar Histórico</button>
+        <!-- PLAYBOOK DO TREINADOR: RECOMENDAÇÕES (FIEI AO CODE.HTML) -->
+        <div class="bg-brand-court/90 rounded-2xl border border-brand-card-border p-6 shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center text-brand-gold">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="font-athletic text-xl tracking-wider text-white uppercase">PLAYBOOK DO TREINADOR: RECOMENDAÇÕES</h3>
+                <p class="text-xs text-slate-400">Instruções táticas para maximizar seu rendimento</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-card border border-slate-700 text-slate-300">
+              CUSTOM COACH AI
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5" id="coachTipsGrid">
+            
+            <div class="bg-brand-card/70 p-3.5 rounded-xl border border-brand-card-border hover:border-brand-orange/50 transition-colors">
+              <div class="flex items-center gap-2 text-brand-orange mb-1.5">
+                <i data-lucide="activity" class="w-4 h-4"></i>
+                <span class="font-athletic text-base tracking-wide uppercase">Cárdio & Agilidade</span>
+              </div>
+              <p id="tipAgility" class="text-xs text-slate-300 leading-relaxed">
+                Treinos de agilidade com escada de coordenação e saltos de caixa para aprimorar impulsão vertical.
+              </p>
+            </div>
+
+            <div class="bg-brand-card/70 p-3.5 rounded-xl border border-brand-card-border hover:border-brand-neon/50 transition-colors">
+              <div class="flex items-center gap-2 text-brand-neon mb-1.5">
+                <i data-lucide="dumbbell" class="w-4 h-4"></i>
+                <span class="font-athletic text-base tracking-wide uppercase">Força no Garrafão</span>
+              </div>
+              <p id="tipStrength" class="text-xs text-slate-300 leading-relaxed">
+                Manutenção de potência atlética: movimentos olímpicos, calistenia e fortalecimento do core.
+              </p>
+            </div>
+
+            <div class="bg-brand-card/70 p-3.5 rounded-xl border border-brand-card-border hover:border-brand-gold/50 transition-colors">
+              <div class="flex items-center gap-2 text-brand-gold mb-1.5">
+                <i data-lucide="apple" class="w-4 h-4"></i>
+                <span class="font-athletic text-base tracking-wide uppercase">Nutrição de MVP</span>
+              </div>
+              <p id="tipNutrition" class="text-xs text-slate-300 leading-relaxed">
+                Dieta de alto rendimento: micronutrientes, hidratação ativa e refeições equilibradas pré e pós-jogo.
+              </p>
+            </div>
+
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span class="flex items-center gap-1.5">
+              <i data-lucide="info" class="w-3.5 h-3.5 text-slate-500"></i> O IMC é uma triagem biométrica geral; consulte um profissional de educação física e nutricionista esportivo.
+            </span>
+            <button onclick="shareStats()" class="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1 transition-colors">
+              <i data-lucide="share-2" class="w-3 h-3 text-brand-orange"></i> Compartilhar Ficha
+            </button>
+          </div>
+
         </div>
+
+      </section>
+
     </div>
 
-    <!-- Rodapé de Privacidade -->
-    <footer class="privacy-footer">
-        🔒 Seus dados são processados inteiramente no seu navegador e não são enviados para nenhum servidor externo.
-    </footer>
+  </main>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
